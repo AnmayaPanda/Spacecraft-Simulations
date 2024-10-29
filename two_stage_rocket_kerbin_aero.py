@@ -201,11 +201,13 @@ print('Surface Gravity (m/s^2)',gravity(0,Rplanet))
 test_altitude = np.linspace(0,100000,100)
 test_rho = aeroModel.getDensity(test_altitude)
 plt.figure()
+plt.subplot(2,3,1)
 plt.plot(test_altitude,test_rho,'b-')
+#plt.title('Figure 1 - Air Density as a Function of Above Ground Level')
 plt.xlabel('Altitude (m)')
 plt.ylabel('Air Density (kg/m^3)')
 plt.grid()
-plt.show()
+#plt.show()
 
 ###Initial Conditions - For Orbit
 '''
@@ -238,37 +240,41 @@ massout = stateout[:,4]
 ##Plot
 
 ###ALTITUDE
-plt.figure()
+plt.subplot(2,3,2)
 plt.plot(tout,altitude)
+#plt.title('Figure 2 - Altitude as a Function of Time')
 plt.xlabel('Time (sec)')
 plt.ylabel('Altitude (m)')
 plt.grid()
-plt.show()
+#plt.show()
 
 ###VELOCITY
-plt.figure()
+plt.subplot(2,3,3)
 plt.plot(tout,velout)
+#plt.title('Figure 3 - Velocity as a Function of Time')
 plt.xlabel('Time (sec)')
 plt.ylabel('Total Speed (m/s)')
 plt.grid()
-plt.show()
+#plt.show()
 
 ##MASS
-plt.figure()
+plt.subplot(2,3,4)
 plt.plot(tout,massout)
+#plt.title('Figure 4 - Mass as a Function of Time')
 plt.xlabel('Time (sec)')
 plt.ylabel('Mass (kg)')
 plt.grid()
-plt.show()
+#plt.show()
 
 ##2D ORBIT
-plt.figure()
+plt.subplot(2,3,5)
 plt.plot(xout,zout,'r-',label = 'Orbit')
 plt.plot(xout[0],zout[0],'g*')
 theta = np.linspace(0,2*np.pi,1000)
 xplanet = Rplanet*np.sin(theta)
 yplanet = Rplanet*np.cos(theta)
 plt.plot(xplanet,yplanet,'b-',label = 'Planet')
+#plt.title('Figure 5 - 2D Orbit')
 plt.grid()
 plt.legend()
 plt.show()
